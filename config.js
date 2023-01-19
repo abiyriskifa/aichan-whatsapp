@@ -1,0 +1,4 @@
+module.exports = {
+  API_KEY_RM_BG: "eUCQZYyBjJ6kJ61L2G8XMJsS",
+  API_KEY_OPEN_AI: "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",
+};

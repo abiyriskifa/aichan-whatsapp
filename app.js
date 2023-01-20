@@ -99,8 +99,14 @@ client.on("message", async (msg) => {
 
   // Aichan Mode
   if (ChekUserData(phone) === "valid" && ChekStatusUser(phone) === "active") {
-    await AichanHandler(text, msg);
-    UpdateUserData(phone, "active", text);
+    // Check Edit BG
+    if (text.includes("edit_bg")) {
+      await EditPhotoHandler(text, msg);
+      UpdateUserData(phone, "active", "edit_bg");
+    } else {
+      await AichanHandler(text, msg);
+      UpdateUserData(phone, "active", text);
+    }
   }
 
   // Cek Pesan Aichan
@@ -114,13 +120,6 @@ client.on("message", async (msg) => {
     // reply
     msg.reply("Aichan Actived! silahkan ajukan pertanyaan Anda.");
   }
-
-  // Cek Remove BG
-  if (text.includes("edit_bg")) {
-    await EditPhotoHandler(text, msg);
-  }
-
-  console.log(msg);
 });
 
 // Jalankan Fungsi Whatsapp

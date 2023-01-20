@@ -3,11 +3,11 @@ const { API_KEY_RM_BG } = require("../config");
 
 const EditPhotoHandler = async (text, msg) => {
   const cmd = text.split("/");
-  if (cmd.length < 2) {
-    return msg.reply(
-      "Waduh! kayanya format salah deh. coba ketik perintah *edit_bg/warna*"
-    );
-  }
+  // if (cmd.length < 2) {
+  //   return msg.reply(
+  //     "Waduh! kayanya format salah deh. coba ketik perintah *edit_bg/warna*"
+  //   );
+  // }
 
   if (msg.hasMedia) {
     if (msg.type != "image") {
@@ -25,12 +25,12 @@ const EditPhotoHandler = async (text, msg) => {
       const newPhoto = await EditPhotoRequest(media.data, color);
 
       if (!newPhoto.success) {
-        return msg.reply("Terjadi kesalahan.");
+        return msg.reply("Gome! terjadi kesalahan pada saat memproses.");
       }
 
       const chat = await msg.getChat();
       media.data = newPhoto.base64;
-      chat.sendMessage(media, { caption: "Ini hasilnya :)" });
+      chat.sendMessage(media, { caption: "Ini hasilnya onichann :)" });
     }
   }
 };
